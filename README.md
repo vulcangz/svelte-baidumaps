@@ -1,6 +1,6 @@
 ## Svelte Baidu Maps components (WIP)
 
-Svelte components based on Baidu Map JavaScript Api package.
+Svelte components based on Baidu Map JavaScript Api package. [demo](https://vulcangz.github.io/svelte-baidumaps/demo/)
 
 ## Usage
 
