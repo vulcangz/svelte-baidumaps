@@ -2,6 +2,10 @@
 
 Svelte components based on Baidu Map JavaScript Api package.
 
+## Demo
+
+[demo](https://vulcangz.github.io/svelte-baidumaps/demo/)
+
 ## Usage
 
 Simple reference: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
@@ -66,7 +70,7 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 </script>
 ```
 
-## Demo
+## Developing
 
 To see the simple app demo:
 
