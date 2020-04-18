@@ -280,7 +280,7 @@
     "mimic-fn": "2.1.0",
     "min-indent": "1.0.0",
     "minimatch": "3.0.4",
-    "minimist": "0.0.8",
+    "minimist": "1.2.3",
     "mkdirp": "0.5.1",
     "log-symbols": "3.0.0",
     "mri": "1.1.4",
