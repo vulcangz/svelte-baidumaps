@@ -6,3 +6,5 @@ export { default as GeolocationControl } from './controls/GeolocationControl.sve
 export { default as NavigationControl } from './controls/NavigationControl.svelte';
 export { default as ScaleControl } from './controls/ScaleControl.svelte';
 export { default as CityListControl } from './controls/CityListControl.svelte';
+
+export { default as MapTypeControl } from './controls/MapTypeControl.svelte';
