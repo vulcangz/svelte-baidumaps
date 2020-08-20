@@ -1,5 +1,5 @@
 <script>
-  import { Map, Marker, MarkerList, GeolocationControl, NavigationControl, CityListControl, MapTypeControl } from './components/components.module.js';
+  import { Map, Marker, MarkerList, GeolocationControl, NavigationControl, CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
     
   let baseMapConfig = {
@@ -16,7 +16,14 @@
     lng: "105.000",
     lat: "38.000",
 		zoom: 12
-	}; 
+	};
+  
+  let copyrightControlID = 1
+  let copyrightControlContent = "<a href='#' style='font-size:36px;background:yellow'>山川异域，风月同天。</a>"
+  let copyrightControlOffset = {
+    width: 80,
+    height: 160
+  }
 </script>
 
 <style>
@@ -42,5 +49,11 @@
     <MarkerList markers={ data.data } />
     <NavigationControl position={"top-right"} />
     <GeolocationControl position={"bottom-right"} />
+    <CopyrightControl 
+      id="{1}"
+      content={ copyrightControlContent }
+      offset={ copyrightControlOffset }
+      position={"top-left"}
+    />
   </Map>
 </div>

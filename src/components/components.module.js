@@ -8,3 +8,4 @@ export { default as ScaleControl } from './controls/ScaleControl.svelte';
 export { default as CityListControl } from './controls/CityListControl.svelte';
 
 export { default as MapTypeControl } from './controls/MapTypeControl.svelte';
+export { default as CopyrightControl } from './controls/CopyrightControl.svelte';
