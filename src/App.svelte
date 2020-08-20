@@ -1,5 +1,5 @@
 <script>
-  import { Map, Marker, MarkerList, GeolocationControl, NavigationControl } from './components/components.module.js';
+  import { Map, Marker, MarkerList, GeolocationControl, NavigationControl, CityListControl } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
     
   let baseMapConfig = {
@@ -32,6 +32,7 @@
     <Marker lng={116.392004} lat={39.915104} label="南海" />
     <Marker lng={116.408016} lat={39.91146} label="中国国家博物馆" />
     <NavigationControl />
+    <CityListControl position={"top-right"} />
   </Map>
 </div>
 
