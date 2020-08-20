@@ -371,7 +371,7 @@
     "semver-regex": "2.0.0",
     "require-relative": "0.8.7",
     "shebang-command": "1.2.0",
-    "serialize-javascript": "3.1.0",
+    "serialize-javascript": "2.1.2",
     "signal-exit": "3.0.2",
     "sirv": "0.4.2",
     "slash": "3.0.0",
