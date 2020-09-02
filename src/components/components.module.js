@@ -11,3 +11,7 @@ export { default as MapTypeControl } from './controls/MapTypeControl.svelte';
 export { default as CopyrightControl } from './controls/CopyrightControl.svelte';
 
 export { default as LocalSearch } from './search/LocalSearch.svelte';
+export { default as Bus } from './search/Bus.svelte';
+export { default as Driving } from './search/Driving.svelte';
+export { default as Transit } from './search/Transit.svelte';
+export { default as Walking } from './search/Walking.svelte';

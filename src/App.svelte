@@ -1,6 +1,6 @@
 <script>
   import { Map, Marker, MarkerList, GeolocationControl, NavigationControl, CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
-  import { LocalSearch } from './components/components.module.js';
+  import { LocalSearch, Bus, Driving, Transit, Walking } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
 
   let baseMapConfig = {
@@ -147,6 +147,38 @@
       <div class="column column-30">
         <div id="r-result"></div>
       </div>
+  </section>
+
+  <section class="container" id="examples1">
+    <h5 class="title">4）线路规划</h5>
+    <p>公交路线搜索；步行规划；公交路线规划；驾车线路规划。</p>
+    <div class="row map-wrap">
+      <div class="column column-70">
+        <Map options={ baseMapConfig }>
+          <NavigationControl position={"top-right"} />
+
+          <!--<Bus location={"北京"} keyword={"331"} autoViewport="true" panel={"d-result"}/>   <!-- ok -->
+          <Bus location={"广州"} keyword={"331"} autoViewport="true" panel={"d-result"}/>  <!-- 331 增城 ok; BRT线路 B1,B2 等还不行 -->
+          <!--<Bus location={"广州"} keyword={"B2"} autoViewport="true" panel={"d-result"}/>-->
+          <!--<Walking start={"百度大厦"} end={"北京邮电大学西门"} autoViewport="true" location={"北京"} panel={"d-result"}>
+          </Walking>-->
+          <!--<Transit start={"百度大厦"} end={"北京邮电大学西门"} autoViewport="true" location={"北京"} panel={"d-result"}></Transit>-->
+          <!--<Driving
+            start="新街口"
+            end="新街口"
+            startCity="北京"
+            endCity="南京"
+            waypoints={waypoints}
+            autoViewport="true"
+            panel={"d-result"}>
+          </Driving> -->
+        </Map>
+      </div>
+
+      <div class="column column-30">
+        <div id="d-result"></div>
+      </div>
+    </div>
   </section>
 
   <footer class="footer">
