@@ -1,0 +1,24 @@
+.container {
+  max-width: 100rem;
+  padding-bottom: 2.5rem;
+  padding-top: 2.5rem;
+}
+
+#home {
+  background: #f4f5f6;
+  height: 100vh;
+  position: relative;
+  max-height: 100vh;
+  min-width: 100vw;
+}
+
+.thumbnail {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-center {
+    text-align: center;
+}
