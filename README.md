@@ -1,6 +1,10 @@
-## Svelte Baidu Maps components (WIP)
+## Svelte Baidu Maps components
 
-Svelte components based on Baidu Map JavaScript Api package. [demo](https://vulcangz.github.io/svelte-baidumaps/demo/)
+Svelte components based on Baidu Map JavaScript Api package.
+
+## Demo
+
+[demo](https://vulcangz.github.io/svelte-baidumaps/demo/)
 
 ## Usage
 
@@ -86,4 +90,5 @@ npm run dev
 * [Svelte framework](https://svelte.dev/) & [Context API](https://svelte.dev/tutorial/context-api)
 * Based on [Svelte 3 Component Template](https://github.com/YogliB/svelte-component-template)
 * [beyonk-adventures/svelte-mapbox](https://github.com/beyonk-adventures/svelte-mapbox)
+* [Dafrok/vue-baidu-map](https://github.com/Dafrok/vue-baidu-map)
 
