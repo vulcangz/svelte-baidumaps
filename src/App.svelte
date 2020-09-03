@@ -80,7 +80,7 @@
     </blockquote>
   </header>
 
-  <section class="container" id="examples">
+  <section class="container" id="example1">
     <h5 class="title">1）地图示例</h5>
     <p>地图展示及控件示例。</p>
     <div class="row map-wrap">
@@ -106,7 +106,7 @@
     </div>
   </section>
 
-  <section class="container" id="examples">
+  <section class="container" id="example2">
     <h5 class="title">2）海量点示例</h5>
     <p>调用PointCollection海量点类。目前仅适用于html5浏览器。</p>
     <div class="row map-wrap">
@@ -119,14 +119,16 @@
         </Map>
       </div>
   </section>
-
-  <section class="container" id="examples">
+  
+  <!--
+  <section class="container" id="example3">
     <h5 class="title">3）本地检索示例</h5>
     <p>位置检索、周边检索和范围检索。</p>
     <div class="row map-wrap">
       <div class="column column-70">
         <Map options={ baseMapConfig }>
-          <NavigationControl />
+          <NavigationControl />          
+          -->
           
           <!-- 关键字检索 -->
           <!--
@@ -140,6 +142,7 @@
           -->
 
           <!-- 圆形区域检索 -->
+          <!--
           <LocalSearch nearby={nearby1} keyword={"餐馆"} autoViewport="true" panel={"r-result"} pageCapacity={4}>
           </LocalSearch>
         </Map>
@@ -148,17 +151,19 @@
         <div id="r-result"></div>
       </div>
   </section>
+  -->
 
-  <section class="container" id="examples1">
+  <!--
+  <section class="container" id="examples4">
     <h5 class="title">4）线路规划</h5>
     <p>公交路线搜索；步行规划；公交路线规划；驾车线路规划。</p>
     <div class="row map-wrap">
       <div class="column column-70">
         <Map options={ baseMapConfig }>
           <NavigationControl position={"top-right"} />
-
+  -->
           <!--<Bus location={"北京"} keyword={"331"} autoViewport="true" panel={"d-result"}/>   <!-- ok -->
-          <Bus location={"广州"} keyword={"331"} autoViewport="true" panel={"d-result"}/>  <!-- 331 增城 ok; BRT线路 B1,B2 等还不行 -->
+          <!--<Bus location={"广州"} keyword={"331"} autoViewport="true" panel={"d-result"}/>  <!-- 331 增城 ok; BRT线路 B1,B2 等还不行 -->
           <!--<Bus location={"广州"} keyword={"B2"} autoViewport="true" panel={"d-result"}/>-->
           <!--<Walking start={"百度大厦"} end={"北京邮电大学西门"} autoViewport="true" location={"北京"} panel={"d-result"}>
           </Walking>-->
@@ -172,6 +177,7 @@
             autoViewport="true"
             panel={"d-result"}>
           </Driving> -->
+       <!-- 
         </Map>
       </div>
 
@@ -179,7 +185,7 @@
         <div id="d-result"></div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <footer class="footer">
     <section class="container">
