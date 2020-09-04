@@ -4,36 +4,36 @@ Svelte components based on Baidu Map JavaScript Api package.
 
 ## Demo
 
-[demo](https://vulcangz.github.io/svelte-baidumaps/demo/)
+[online demo](https://vulcangz.github.io/svelte-baidumaps/demo/)
 
+## Install
+
+```bash
+npm install --save @vulcangz/svelte-baidumaps
+```
 ## Usage
 
 Simple reference: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
 
 ### To use within a Svelte application:
 
-First set the api key in [constants.js](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/components/constants.js)
+#### First you need to request and obtain the map api key:
 
-```javascript
-export const apiKey = "your_api_key";
-```
 The key can be applied to [the official website of Baidu map open platform](http://lbsyun.baidu.com/apiconsole/key)
-
-### To use within a Svelte application:
 
 #### Basic Usage (Map)
 
 The container component is the map, and there are a variety of components which go on the map.
 
 ```jsx
-<Map options={ baseMapConfig } withCenterMarker={ true } >
+<Map apiKey="your_api_key" options={ baseMapConfig } withCenterMarker={ true } >
   <Marker lat={someLat} lng={someLng} label="text label" /> // built in Marker component
   <NavigationControl />
   <ScaleControl />
 </Map>
 
 <script>
-  import { Map, Marker, NavigationControl, ScaleControl } from './components/components.module.js'
+  import { Map, Marker, NavigationControl, ScaleControl } from '@vulcangz/svelte-baidumaps'
 
   let baseMapConfig = {
     label: "this is a map base demo",
@@ -50,15 +50,15 @@ The container component is the map, and there are a variety of components which 
 See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b21) for more information on API.
 
 ```jsx
-<Map options={ pointCollectionMapConfig }>
+<Map apiKey="your_api_key" options={ pointCollectionMapConfig }>
   <MarkerList markers={ data } />
   <NavigationControl />
   <ScalingControl />
 </Map>
 
 <script>
-  import { Map, MarkerList, NavigationControl, GeolocationControl } from './components/components.module.js'
-  import { data } from './your-data.js';
+  import { Map, MarkerList, NavigationControl, GeolocationControl } from '@vulcangz/svelte-baidumaps'
+  import { data } from './your-marker-points-data.js';
 
   let pointCollectionMapConfig = {
     label: "this is map point collection demo",
@@ -70,17 +70,41 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 </script>
 ```
 
-## Demo
+## Components
 
-To see the simple app demo:
+### Core component
 
-`
-npm run dev
-`
+- [x] Map
+
+### Control components
+- [x] NavigationControl
+- [x] MapTypeControl
+- [x] ScaleControl
+- [x] CopyrightControl
+- [ ] OverviewMapControl
+- [x] CityListControl
+
+### Overlay components
+- [x] Marker
+- [x] MarkerList
+- [ ] Circle
+- [ ] Icon
+- [ ] InfoWindow
+- [ ] Label
+- [ ] Polygon
+- [ ] Polyline
+
+### Service components
+- [x] LocalSearch
+- [x] Bus
+- [x] Transit
+- [x] Walking
+- [x] Driving
+- [ ] LocalCity
+- [ ] Autocomplete
 
 ## Todo
 
-* other components
 * test
 * docs
 
