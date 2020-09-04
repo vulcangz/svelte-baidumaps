@@ -20,9 +20,9 @@
    * @see http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a7b19
    */
   const drivingRoutePolicy = [
-    bdmap_DRIVING_POLICY_LEAST_TIME,     // 最少时间
-    bdmap_DRIVING_POLICY_LEAST_DISTANCE, // 最短距离
-    bdmap_DRIVING_POLICY_AVOID_HIGHWAYS  // 避开高速
+    BMAP_DRIVING_POLICY_LEAST_TIME,     // 最少时间
+    BMAP_DRIVING_POLICY_LEAST_DISTANCE, // 最短距离
+    BMAP_DRIVING_POLICY_AVOID_HIGHWAYS  // 避开高速
   ];
   
   export let location; // {Object|String}
