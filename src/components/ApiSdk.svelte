@@ -2,9 +2,12 @@
   import loader from './loader.js'
   import { onMount, createEventDispatcher } from 'svelte'
   import { mapsLoaded, mapsLoading } from './stores.js'
-  import { apiKey } from './constants.js'
+  // Just used in local dev env
+  // import { apiKey } from './constants.js'
 
   const dispatch = createEventDispatcher()
+  
+  export let apiKey
 
   $: $mapsLoaded && dispatch('ready')
 

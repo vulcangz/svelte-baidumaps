@@ -1,4 +1,4 @@
-<ApiSdk on:ready={initialise} />
+<ApiSdk {apiKey} on:ready={initialise} />
 <div bind:this={mapElement}>
 	{#if map}
 		<slot></slot>
@@ -24,6 +24,8 @@
   });
   
   const dispatch = createEventDispatcher();
+  
+  export let apiKey
 
   let mapElement;
   let map;
