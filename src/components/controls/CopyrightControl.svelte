@@ -43,8 +43,6 @@
 
     const crctl = new bdmap.CopyrightControl(options)
     map.addControl(crctl)
-    console.log(typeof(id))
-    console.log("id=",id)
     
     var bs = map.getBounds();   //返回地图可视区域
     
