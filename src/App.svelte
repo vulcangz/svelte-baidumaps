@@ -1,8 +1,12 @@
 <script>
   import { Map, Marker, MarkerList, GeolocationControl, NavigationControl, CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
   import { LocalSearch, Bus, Driving, Transit, Walking } from './components/components.module.js';
+  import { Circle, Polygon, Polyline } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
 
+  // Please change the apiKey to your key
+  let apiKey = "your_api_key"
+  
   let baseMapConfig = {
     label: "this is a map base demo",
     address: "china beijing",
@@ -58,6 +62,80 @@
     },
     '陕西兵马俑'
   ]
+
+  /* for Circle demo */
+  let circleCenter = {
+    lng: 116.404,
+    lat: 39.915
+  }
+  
+  // Polygon
+  let polygonPoints = [
+    {
+      lng: 116.387112,
+      lat: 39.920977
+    },
+    {
+      lng: 116.385243,
+      lat: 39.913063
+    },
+    {
+      lng: 116.394226,
+      lat: 39.917988
+    },
+    {
+      lng: 116.401772,
+      lat: 39.921364
+    },
+    {
+      lng: 116.41248,
+      lat: 39.927893
+    }
+  ]
+
+  // Polygon Rectangle
+  let polygonRectanglePoints = [
+    {
+      lng: 116.392214,
+      lat: 39.918985
+    },
+    {
+      lng: 116.41478,
+      lat: 39.918985
+    },
+    {
+      lng: 116.41478,
+      lat: 39.911901
+    },
+    {
+      lng: 116.392214,
+      lat: 39.911901
+    }
+  ]
+  
+  // Polyline
+  let polylinePoints = [
+    {
+      lng: 116.399,
+      lat: 39.910
+    },
+    {
+      lng: 116.405,
+      lat: 39.920
+    },
+    {
+      lng: 116.425,
+      lat: 39.900
+    }
+  ]
+  
+  // Set line and surface editable
+  let editing = false
+
+  $: handleEditing = () => {
+    editing = !editing
+  }
+  
 </script>
 
 <style>
@@ -84,7 +162,7 @@
     <h5 class="title">1）地图示例</h5>
     <p>地图展示及控件示例。</p>
     <div class="row map-wrap">
-      <Map options={ baseMapConfig } withCenterMarker={ true } >
+      <Map apiKey={apiKey} options={ baseMapConfig } withCenterMarker={ true } >
         <Marker lng={116.404113} lat={39.919852} label="西雁翅楼" />
         <Marker lng={116.392004} lat={39.915104} label="南海" />
         <Marker lng={116.408016} lat={39.91146} label="中国国家博物馆" />
@@ -102,8 +180,21 @@
           offset={ copyrightControlOffset1 }
           position={"top-left"}
         />
+
+        <Circle center={circleCenter} radius={"500"} strokeColor={"blue"} strokeWeight={2} strokeOpacity={0.5} editing={editing} />
+        
+        <Polygon path={polygonPoints} strokeColor={"blue"} strokeWeight={2} strokeOpacity={0.5}  editing={editing} />
+        <Polygon path={polygonRectanglePoints} strokeColor={"blue"} strokeWeight={2} strokeOpacity={0.5} editing={editing} />
+        
+        <Polyline path={polylinePoints} strokeColor={"blue"} strokeWeight={2} strokeOpacity={0.5} editing={editing} />
       </Map>
     </div>
+    <p>
+      <br>
+      <button on:click={handleEditing} >
+        打开/关闭编辑功能
+      </button>
+    </p>
   </section>
 
   <section class="container" id="example2">
@@ -126,7 +217,7 @@
     <p>位置检索、周边检索和范围检索。</p>
     <div class="row map-wrap">
       <div class="column column-70">
-        <Map options={ baseMapConfig }>
+        <Map apiKey={apiKey} options={ baseMapConfig }>
           <NavigationControl />          
           -->
           
@@ -159,7 +250,7 @@
     <p>公交路线搜索；步行规划；公交路线规划；驾车线路规划。</p>
     <div class="row map-wrap">
       <div class="column column-70">
-        <Map options={ baseMapConfig }>
+        <Map apiKey={apiKey} options={ baseMapConfig }>
           <NavigationControl position={"top-right"} />
   -->
           <!--<Bus location={"北京"} keyword={"331"} autoViewport="true" panel={"d-result"}/>   <!-- ok -->
@@ -190,7 +281,7 @@
   <footer class="footer">
     <section class="container">
       <p>
-        Designed with ♥ by
+        Designed with ? by
         <a
           target="_blank"
           href="http://github.com/vulcangz"
