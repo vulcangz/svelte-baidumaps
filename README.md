@@ -4,7 +4,8 @@ Svelte components based on Baidu Map JavaScript Api package.
 
 ## Demo
 
-[online demo](https://vulcangz.github.io/svelte-baidumaps/demo/)
+* [https://vulcangz.github.io/svelte-baidumaps/demo/](https://vulcangz.github.io/svelte-baidumaps/demo/)
+* [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
 
 ## Install
 
@@ -13,15 +14,16 @@ npm install --save @vulcangz/svelte-baidumaps
 ```
 ## Usage
 
-Simple reference: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
+* Simple reference: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
+* Usage examples: [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
 
 ### To use within a Svelte application:
 
-#### First you need to request and obtain the map api key:
+#### 1. First you need to request and obtain the map api key:
 
 The key can be applied to [the official website of Baidu map open platform](http://lbsyun.baidu.com/apiconsole/key)
 
-#### Basic Usage (Map)
+#### 2. Basic Usage (Map)
 
 The container component is the map, and there are a variety of components which go on the map.
 
@@ -45,7 +47,7 @@ The container component is the map, and there are a variety of components which 
 </script>
 ```
 
-#### Basic Usage (MarkerList)
+#### 3. Basic Usage (MarkerList)
 
 See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b21) for more information on API.
 
@@ -87,12 +89,12 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 ### Overlay components
 - [x] Marker
 - [x] MarkerList
-- [ ] Circle
+- [x] Circle
 - [ ] Icon
 - [ ] InfoWindow
 - [ ] Label
-- [ ] Polygon
-- [ ] Polyline
+- [x] Polygon
+- [x] Polyline
 
 ### Service components
 - [x] LocalSearch
