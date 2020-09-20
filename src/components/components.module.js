@@ -15,3 +15,7 @@ export { default as Bus } from './search/Bus.svelte';
 export { default as Driving } from './search/Driving.svelte';
 export { default as Transit } from './search/Transit.svelte';
 export { default as Walking } from './search/Walking.svelte';
+
+export { default as Circle } from './overlays/Circle.svelte';
+export { default as Polygon } from './overlays/Polygon.svelte';
+export { default as Polyline } from './overlays/Polyline.svelte';
