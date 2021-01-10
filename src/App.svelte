@@ -163,8 +163,8 @@
     <p>地图展示及控件示例。</p>
     <div class="row map-wrap">
       <Map apiKey={apiKey} options={ baseMapConfig } withCenterMarker={ true } >
-        <Marker lng={116.404113} lat={39.919852} label="西雁翅楼" />
-        <Marker lng={116.392004} lat={39.915104} label="南海" />
+        <Marker lng={116.404113} lat={39.919852} label="西雁翅楼" icon={{ path: 'PIN_DROP', opts: { anchor: { width: 10, height: 10 }, fillColor: 'green', scale: 2 } }} />
+				<Marker lng={116.392004} lat={39.915104} label="南海" icon={{ path: 'PLACE_PIN' }} />
         <Marker lng={116.408016} lat={39.91146} label="中国国家博物馆" />
         <NavigationControl />
         <MapTypeControl mtype={"Ns"} position={"bottom-right"} />
