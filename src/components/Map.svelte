@@ -17,6 +17,7 @@
   import { createEventDispatcher } from 'svelte'
   import ApiSdk from './ApiSdk.svelte'
   import { contextKey } from './stores.js';
+  import { createDefaultSymbolIcon } from './utils/icon.js';
 
   setContext(contextKey, {
     getMap: () => map,
@@ -76,7 +77,8 @@
         map.centerAndZoom(point, options.zoom)
         
         if (withCenterMarker) {
-          var marker = new bdmap.Marker(point);  // 创建标注
+          const myIcon = createDefaultSymbolIcon(bdmap);
+          var marker = new bdmap.Marker(point, { icon: myIcon });  // 创建标注
           marker.enableDragging(); //marker可拖拽
           map.addOverlay(marker); //在地图中添加marker
           var label = new bdmap.Label(options.label,{offset:new bdmap.Size(20,-10)});
