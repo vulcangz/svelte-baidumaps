@@ -40,7 +40,8 @@ export function createLabel (bdmap, options = {}) {
 
 export function createSymbol (bdmap, options = {}) {
   const {path, opts} = options
-  return new bdmap.Symbol(global[path] || path, {
+  return new bdmap.Symbol( path, {
+    // anchor: createSize(bdmap, {width: 10, height: 10}),
     anchor: opts.anchor && createSize(bdmap, opts.anchor),
     fillColor: opts.fillColor,
     fillOpacity: opts.fillOpacity,
