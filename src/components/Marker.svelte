@@ -1,8 +1,8 @@
 <script>
 	import { getContext } from 'svelte';
 	import { contextKey } from './stores.js';
-  import { createSymbol } from './utils/factory.js';
-  import { ICONS, createDefaultSymbolIcon } from './utils/icon.js';
+	import { createSize, createSymbol } from './utils/factory.js';
+	import { ICONS, createDefaultSymbolIcon } from './utils/icon.js';
 
 	const { getMap, getBdMap } = getContext(contextKey);
 	const map = getMap();
@@ -27,6 +27,15 @@
 	export let label;
 
 	/**
+	 * 文本标注的位置偏移值
+	 * @type {Size(width: Number, height: Number)}
+	 */
+	export let labelOffset = {
+		width: 20, // 水平方向的数值
+		height: -10, // 竖直方向的数值
+	};
+
+	/**
 	 * 标注拖拽功能, 默认关闭
 	 * @type {boolean}
 	 */
@@ -35,10 +44,10 @@
 	/**
 	 * 矢量图标参数
 	 * @type {{ path: string, anchor: object{width: number, height: number}, rotation: number,
-   *          fillColor: string, fillOpacity: number, scale: number,
-   *          strokeColor: string, strokeWeight: number  }}
+	 *          fillColor: string, fillOpacity: number, scale: number,
+	 *          strokeColor: string, strokeWeight: number  }}
 	 */
-  export let icon = {
+	export let icon = {
 		path: '',
 		opts: {},
 	};
@@ -52,7 +61,7 @@
 		myIcon = icon;
 	} else {
 		if (icon && icon.path && ICONS[icon.path]) {
-      myIcon = createSymbol(bdmap, {
+			myIcon = createSymbol(bdmap, {
 				path: ICONS[icon.path],
 				opts: {
 					anchor: {
@@ -70,7 +79,7 @@
 		} else {
 			myIcon = createDefaultSymbolIcon(bdmap);
 		}
-  }
+	}
 
 	point = new bdmap.Point(lng, lat);
 	marker = new bdmap.Marker(point, { icon: myIcon }); // 创建标注
@@ -81,7 +90,9 @@
 	map.addOverlay(marker); //在地图中添加marker
 	marker.setAnimation(bdmap.BMAP_ANIMATION_BOUNCE);
 
-	labelObject = new bdmap.Label(label, { offset: new bdmap.Size(20, -10) });
+	labelObject = new bdmap.Label(label, {
+		offset: createSize(bdmap, labelOffset),
+	});
 	labelObject.setStyle({ color: 'red', fontSize: '1.2rem' });
 	marker.setLabel(labelObject);
 </script>
