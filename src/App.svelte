@@ -1,9 +1,12 @@
 <script>
-  import { Map, Marker, MarkerList, GeolocationControl, NavigationControl, CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
+  
+  import { onMount } from 'svelte';
+  import { Map, Marker, MarkerList, GeolocationControl, NavigationControl,
+    CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
   import { LocalSearch, Bus, Driving, Transit, Walking } from './components/components.module.js';
   import { Circle, Polygon, Polyline } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
-
+  
   // Please change the apiKey to your key
   let apiKey = "your_api_key"
   
@@ -136,6 +139,22 @@
     editing = !editing
   }
   
+  let el
+  let mapElement
+  
+  onMount(() => {
+    console.log('the component has mounted');
+    console.log('getDomBounds=', el.getDomBounds())
+    console.log('getDefaultView=', el.getDefaultView())
+  });
+  
+  function getMapInstance(e) {
+    console.log('map instance-->', e.detail)
+  }
+  
+  function handleDragend(e) {
+    console.log('event-->', e.detail.type, e.detail.target, e.detail.point)
+  }
 </script>
 
 <style>
@@ -162,11 +181,16 @@
     <h5 class="title">1）地图示例</h5>
     <p>地图展示及控件示例。</p>
     <div class="row map-wrap">
-      <Map apiKey={apiKey} options={ baseMapConfig } withCenterMarker={ true } >
-        <Marker lng={116.404113} lat={39.919852} label="西雁翅楼" labelOffset={{width: 30, height: -10}}
-          icon={{ path: 'PIN_DROP', opts: { anchor: { width: 10, height: 10 }, fillColor: 'green', scale: 2 } }} />
-				<Marker lng={116.392004} lat={39.915104} label="南海" icon={{ path: 'PLACE_PIN' }} />
-        <Marker lng={116.408016} lat={39.91146} label="中国国家博物馆" />
+      <Map apiKey={apiKey} options={ baseMapConfig } withCenterMarker={ true } bind:this={el} on:instance={getMapInstance}
+        on:recentre={e => console.log(e.detail.center.lat, e.detail.center.lng)}
+        on:dragend={handleDragend}
+        on:resize={e => console.log(e.detail.type, e.detail.size)}
+        events={['dragend', 'resize']} 
+      >
+      <Marker lng={116.404113} lat={39.919852} label="西雁翅楼" labelOffset={{width: 30, height: -10}} 
+        icon={{ path: 'PIN_DROP', opts: { anchor: { width: 10, height: 10 }, fillColor: 'green', scale: 2 } }} />
+      <Marker lng={116.392004} lat={39.915104} label="南海" icon={{ path: 'PLACE_PIN' }} />
+      <Marker lng={116.408016} lat={39.91146} label="中国国家博物馆" />
         <NavigationControl />
         <MapTypeControl mtype={"Ns"} position={"bottom-right"} />
         <CopyrightControl
@@ -198,6 +222,7 @@
     </p>
   </section>
 
+
   <section class="container" id="example2">
     <h5 class="title">2）海量点示例</h5>
     <p>调用PointCollection海量点类。目前仅适用于html5浏览器。</p>
@@ -211,6 +236,7 @@
         </Map>
       </div>
   </section>
+
   
   <!--
   <section class="container" id="example3">
