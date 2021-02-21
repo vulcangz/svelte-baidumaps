@@ -3,6 +3,14 @@
 </script>
 
 <script>
+  /**
+   * 折线地图叠加层组件
+   * 
+   * @component Polyline
+   * @example
+   * <Polyline path={[ { lng: 116.399, lat: 39.910 }, { lng: 116.405, lat: 39.920 }, { lng: 116.425, lat: 39.900 } ]} strokeColor={"blue"} strokeWeight={2} strokeOpacity={0.5} editing={editing} />
+   */
+
   import { onMount, createEventDispatcher } from 'svelte';
   import { getContext } from 'svelte'
   import { contextKey } from '../stores.js'
@@ -11,18 +19,63 @@
   const { getMap, getBdMap } = getContext(contextKey)
   const map = getMap()
   const bdmap = getBdMap()
+    
+	/**
+	 * 多边型的点数组
+	 * @type {Array.<number, number>}
+	 */
+  export let path
   
-  export let path; // Array
-  export let strokeColor; // String
-  export let strokeWeight; // Number
-  export let strokeOpacity; // Number
-  export let strokeStyle; // String
-  export let massClear = true; // Boolean
-  export let clicking = true; // Boolean
-  export let editing = false; // Boolean
-  export let icons = []; // Array
+	/**
+	 * 边线颜色
+	 * @type {string}
+	 */
+  export let strokeColor
+
+	/**
+	 * 边线的宽度，以像素为单位
+	 * @type {number}
+	 */
+  export let strokeWeight
+
+	/**
+	 * 边线透明度，取值范围 0 - 1
+	 * @type {number}
+	 */
+  export let strokeOpacity
+
+	/**
+	 * 边线的样式，solid 或 dashed
+	 * @type {'solid'|'dashed'}
+	 */
+  export let strokeStyle = 'solid'
   
-  let originInstance;
+	/**
+	 * 是否在调用 map.clearOverlays 清除此覆盖物，默认为 true
+	 * @type {boolean}
+	 */
+  export let massClear = true
+
+	/**
+	 * 是否响应点击事件，默认为 true
+	 * @type {boolean}
+	 */
+  export let clicking = true
+
+	/**
+	 * 是否启用线编辑，默认为 false
+	 * @type {boolean}
+	 */
+  export let editing = false
+
+	/**
+	 * 配置贴合折线的图标
+   * @see {@link http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b13|百度地图JavaScript API v2.0类参考--IconSequence}
+	 * @type {Array.<symbol: Symbol, offset: string, repeat: string, fixedRotation: boolean>}
+	 */
+  export let icons = []
+  
+  let originInstance
   
   const iconSequences = (() => {
     return icons.map(item => {

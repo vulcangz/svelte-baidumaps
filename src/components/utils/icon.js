@@ -1,7 +1,7 @@
 import { createSymbol } from './factory'
 
 // icons from Material Design icons by Google
-// @link: https://github.com/google/material-design-icons/blob/master/src/maps/
+// @see {@link: https://github.com/google/material-design-icons/blob/master/src/maps/|Material Design icons by Google}
 export const ICONS = {
 	PLACE_PIN:
 		'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
