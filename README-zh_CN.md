@@ -1,33 +1,26 @@
-## svelte-baidumaps components
+## Svelte 百度地图组件
 
-English | [简体中文](./README-zh_CN.md)
+[English](./README.md) | 简体中文
 
-Svelte components based on Baidu Map JavaScript Api package.
+Svelte 百度地图组件基于[百度地图 JavaScript API v2.0 类参考](https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_reference.html)。
 
-## Demo
+## 演示
 
-* [https://vulcangz.github.io/svelte-baidumaps/demo/](https://vulcangz.github.io/svelte-baidumaps/demo/)
-* [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
+[在线演示](https://vulcangz.github.io/svelte-baidumaps/demo/)
 
-## Install
+## 用法
 
-```bash
-npm install --save @vulcangz/svelte-baidumaps
-```
-## Usage
+简单参考: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
 
-* Simple reference: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
-* Usage examples: [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
+### 在 Svelte 应用中使用:
 
-### To use within a Svelte application:
+#### 首先您需要申请并取得地图 API 密钥:
 
-#### 1. First you need to request and obtain the map api key:
+API 密钥可以在 [百度地图开放平台官方网站](http://lbsyun.baidu.com/apiconsole/key) 申请。
 
-The key can be applied to [the official website of Baidu map open platform](http://lbsyun.baidu.com/apiconsole/key)
+#### 基本用法（Map）
 
-#### 2. Basic Usage (Map)
-
-The container component is the map, and there are a variety of components which go on the map.
+Map 是容器组件，Map 内可以有各种各样的组件。
 
 ```jsx
 <Map apiKey="your_api_key" options={ baseMapConfig } withCenterMarker={ true } >
@@ -37,7 +30,7 @@ The container component is the map, and there are a variety of components which 
 </Map>
 
 <script>
-  import { Map, Marker, NavigationControl, ScaleControl } from '@vulcangz/svelte-baidumaps'
+  import { Map, Marker, NavigationControl, ScaleControl } from './components/components.module.js'
 
   let baseMapConfig = {
     label: "this is a map base demo",
@@ -49,9 +42,9 @@ The container component is the map, and there are a variety of components which 
 </script>
 ```
 
-#### 3. Basic Usage (MarkerList)
+#### 基本用法（MarkerList）
 
-See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b21) for more information on API.
+有关此 API 的更多信息，请参见 [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b21)。
 
 ```jsx
 <Map apiKey="your_api_key" options={ pointCollectionMapConfig }>
@@ -61,8 +54,8 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 </Map>
 
 <script>
-  import { Map, MarkerList, NavigationControl, GeolocationControl } from '@vulcangz/svelte-baidumaps'
-  import { data } from './your-marker-points-data.js';
+  import { Map, MarkerList, NavigationControl, GeolocationControl } from './components/components.module.js'
+  import { data } from './your-data.js';
 
   let pointCollectionMapConfig = {
     label: "this is map point collection demo",
@@ -73,6 +66,14 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 	}; 
 </script>
 ```
+
+## 本地开发
+
+要查看简单的应用演示：
+
+`
+npm run dev
+`
 
 ## Components
 
@@ -112,7 +113,7 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 * test
 * docs
 
-## Credits and Inspiration
+## 致谢及参考
 
 * [百度地图开放平台](http://lbsyun.baidu.com/)
 * [Svelte framework](https://svelte.dev/) & [Context API](https://svelte.dev/tutorial/context-api)
@@ -120,3 +121,4 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 * [beyonk-adventures/svelte-mapbox](https://github.com/beyonk-adventures/svelte-mapbox)
 * [Dafrok/vue-baidu-map](https://github.com/Dafrok/vue-baidu-map)
 * [Material Design icons by Google](https://github.com/google/material-design-icons)
+
