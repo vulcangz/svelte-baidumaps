@@ -4,9 +4,19 @@ context('Actions', () => {
 	beforeEach(() => {
 		cy.visit('http://localhost:5000');
 	});
+  
+  // Timeout solution
+  // @see https://github.com/cypress-io/cypress/issues/2549#issuecomment-663514072
+  afterEach(function () {
+    const testFailed = this.currentTest.err;
+    if (testFailed) {
+      cy.window().should("exist")
+    }
+  })
 
+  // @todo Timeout error to be resolved
 	it('Should render example1 map with center marker', () => {
-    cy.findByText('this is a map base demo').should('exist')
+    cy.findByText('this is a map base demo').should('exist')   
 	});
   
   it('Example1 map contains label "中国国家博物馆"', () => {
