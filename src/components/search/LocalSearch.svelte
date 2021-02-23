@@ -1,28 +1,78 @@
 <script context="module">
-  import { createPoint, createBounds } from '../utils/factory.js';
-  import { isPoint } from '../utils/util.js';
+  import { createPoint, createBounds } from '../utils/factory.js'
+  import { isPoint } from '../utils/util.js'
 </script>
 
 <script>
-  import { onMount, createEventDispatcher } from 'svelte';
-  import { getContext } from 'svelte'
+  /**
+   * 本地检索组件
+   * 
+   * @component LocalSearch
+   * @example
+   * <LocalSearch location={"广州"} keyword={"景点"} autoViewport="true" panel={"r-result"} pageCapacity={5} />
+   */
+
+  import { onMount, getContext, createEventDispatcher } from 'svelte'
   import { contextKey } from '../stores.js'
 
   const dispatch = createEventDispatcher();
   const { getMap, getBdMap } = getContext(contextKey)
   const map = getMap()
   const bdmap = getBdMap()
-    
-  // @see http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a7b0
-  export let location; // Object, String
-  export let keyword; // Array, String
+  
+	/**
+	 * 检索区域，其类型可为地图实例、坐标点或城市名称的字符串。
+	 * @type {object|string}
+	 */
+  export let location
+  
+	/**
+	 * 本次检索关键字
+	 * @type {string|Array.<string>}
+	 */
+  export let keyword
+  
+	/**
+	 * 地理坐标的矩形区域
+	 * @type {sw: {{lng: number, lat: number}} Point, ne: {{lng: number, lat: number}} Point}
+	 */
+  export let bounds
+
+	/**
+	 * 圆形区域
+	 * @type {{center:{{lng: number, lat: number}}, radius: number}}
+	 */
+  export let nearby
+
+	/**
+	 * 每页容量
+	 * @type {number}
+	 */
+  export let pageCapacity
+  
+	/**
+	 * 结果列表的 HTML 容器 id 或容器元素
+	 * @type {string|HTMLElement}
+	 */
   export let panel; // {String|HTMLElement}
-  export let bounds; // Object
-  export let nearby; // Object
-  export let pageCapacity; // Number
-  export let autoViewport; // Boolean
-  export let selectFirstResult; // Boolean
-  export let highlightMode; // String
+
+	/**
+	 * 检索结束后是否自动调整地图视野
+	 * @type {boolean}
+	 */
+  export let autoViewport =  true
+
+	/**
+	 * 是否选择第一个检索结果
+	 * @type {boolean}
+	 */
+  export let selectFirstResult = true
+
+	/**
+	 * 驾车结果展现中点击列表后的展现策略
+	 * @type {BMAP_HIGHLIGHT_STEP|BMAP_HIGHLIGHT_ROUTE}
+	 */
+  export let highlightMode
   
   let el;
 
@@ -55,26 +105,26 @@
 
     const local = new bdmap.LocalSearch(_location, {
       onMarkersSet(e) {
-        dispatch('markersset', e);
+        dispatch('markersset', e)
       },
 
       onInfoHtmlSet(e) {
-        dispatch('infohtmlset', e);
+        dispatch('infohtmlset', e)
       },
 
       onResultsHtmlSet(e) {
-        dispatch('resultshtmlset', e);
+        dispatch('resultshtmlset', e)
       },
 
       onSearchComplete(e) {
-        dispatch('searchcomplete', e);
+        dispatch('searchcomplete', e)
       },      
       
       pageCapacity: pageCapacity,
       
       renderOptions: _opts
       
-    });
-    search(local);     
+    })
+    search(local)    
   })
 </script>
