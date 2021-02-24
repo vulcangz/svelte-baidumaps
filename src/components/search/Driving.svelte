@@ -8,6 +8,7 @@
    * 驾车路线规划组件
    * 
    * @component Driving
+   * @see {@link http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a7b16|百度地图JavaScript API v2.0类参考--DrivingRoute}
    * @example
    * <Driving start="新街口" end="新街口" startCity="北京" endCity="南京" waypoints={[ '呼和浩特', { lng: 112.53, lat: 37.87, }, '陕西兵马俑' ]} autoViewport="true" panel={"d-result"} />
    * 
@@ -37,49 +38,49 @@
 	 * 检索区域，其类型可为地图实例、坐标点或城市名称的字符串。
 	 * @type {object|string}
 	 */
-  export let location
+  export let location = null
   
 	/**
 	 * 起点，参数可以是关键字、坐标点（自1.1版本支持）和LocalSearchPoi实例
 	 * @type {object|string}
 	 */
-  export let start; // {Object|String}
+  export let start = null
 
 	/**
 	 * 起点，参数可以是关键字、坐标点（自1.1版本支持）和LocalSearchPoi实例
 	 * @type {object|string}
 	 */
-  export let end; // {Object|String}
+  export let end = null
 
 	/**
 	 * 驾车查询的起点城市，可以是城市名或者城市编码
 	 * @type {object|string}
 	 */
-  export let startCity
+  export let startCity = null
 
 	/**
 	 * 驾车查询的终点城市，可以是城市名或者城市编码
 	 * @type {object|string}
 	 */
-  export let endCity
+  export let endCity = null
   
 	/**
 	 * 途经点集合，最多支持10个途经点，可以是名称也可以是坐标
-	 * @type {object|string}
+	 * @type {{object|string}}
 	 */
-  export let waypoints
+  export let waypoints = null
 
 	/**
 	 * 驾车策略
 	 * @type {BMAP_DRIVING_POLICY_LEAST_TIME|BMAP_DRIVING_POLICY_LEAST_DISTANCE|BMAP_DRIVING_POLICY_AVOID_HIGHWAYS}
 	 */
-  export let policy
+  export let policy = BMAP_DRIVING_POLICY_LEAST_TIME
 	
 	/**
 	 * 结果列表的 HTML 容器 id 或容器元素
 	 * @type {string|HTMLElement}
 	 */
-  export let panel
+  export let panel = "d-result"
 
 	/**
 	 * 检索结束后是否自动调整地图视野
@@ -97,24 +98,24 @@
 	 * 驾车结果展现中点击列表后的展现策略
 	 * @type {BMAP_HIGHLIGHT_STEP|BMAP_HIGHLIGHT_ROUTE}
 	 */
-  export let highlightMode
+  export let highlightMode = BMAP_HIGHLIGHT_STEP
   
   let originInstance
-
-  $: if ((policy < 0 && policy > 2 ) || policy === 'undefined') {
-    policy = 0
-  }
-
+  
   function search(start, end, {
     startCity,
     endCity,
     waypoints
   }) {
-    originInstance.search(start, end, {
-      startCity,
-      endCity,
-      waypoints: getWaypoints(waypoints)
-    });
+    if ( startCity === {} || endCity === {} ) {
+      originInstance.search(start, end);
+    } else {
+      originInstance.search(start, end, {
+        startCity,
+        endCity,
+        waypoints: getWaypoints(waypoints)
+      })
+    }
   }
 
   function getWaypoints(waypoints) {
@@ -124,7 +125,6 @@
   }
 
   onMount( async () => {
-  
     const _location = location ? isPoint(location) ? createPoint(bdmap, location) : location : map;
 
     const route = originInstance = new bdmap.DrivingRoute(_location, {
@@ -162,6 +162,7 @@
       }
 
     })
+    
     search(getPosition(bdmap, start), getPosition(bdmap, end), {
       startCity,
       endCity,
