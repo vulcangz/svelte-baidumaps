@@ -4,7 +4,7 @@
   import { Map, Marker, MarkerList, GeolocationControl, NavigationControl,
     CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
   import { LocalSearch, Bus, Driving, Transit, Walking } from './components/components.module.js';
-  import { Circle, Polygon, Polyline } from './components/components.module.js';
+  import { Circle, Polygon, Polyline,	Label, InfoWindow, PointCollection } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
   
   // Please change the apiKey to your key
@@ -188,8 +188,34 @@
         events={['dragend', 'resize']} 
       >
       <Marker lng={116.404113} lat={39.919852} label="西雁翅楼" labelOffset={{width: 30, height: -10}} 
-        icon={{ path: 'PIN_DROP', opts: { anchor: { width: 10, height: 10 }, fillColor: 'green', scale: 2 } }} />
-      <Marker lng={116.392004} lat={39.915104} label="南海" icon={{ path: 'PLACE_PIN' }} />
+        icon={{ path: 'PIN_DROP', opts: { anchor: { width: 10, height: 10 }, fillColor: 'green', scale: 2 } }} >
+        <InfoWindow
+						width="200"
+						height="30"
+						title="西雁翅楼"
+						message="这里是西雁翅楼"
+						content={`<div><h4 style='margin:0 0 5px 0;'>西雁翅楼</h4>
+          <img style='float:right;margin:0 4px 22px' id='imgDemo' src='https://poi-pic.cdn.bcebos.com/222c068a1b706a453455a44c73de7a41.jpg' width='139' height='60'/>
+          <p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>
+            雁翅楼同样是黄琉璃瓦覆顶，远观好似大雁张开的一对翅膀，故此得名...
+          </p></div>`}
+        />
+      </Marker>
+      <InfoWindow
+        width="200"
+        height="30"
+        position={{ lng: 116.403963, lat: 39.915119 }}
+        title="天安门"
+        message="这里是天安门"
+        content={`<div><h4 style='margin:0 0 5px 0;'>天安门</h4>
+        <img style='float:right;margin:0 4px 22px' id='imgDemo' src='https://maponline0.bdimg.com/sty/map_icons2x/MapRes/tianam.png' width='139' height='104'/>
+        <p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>
+          天安门坐落在中国北京市中心,故宫的南侧,与天安门广场隔长安街相望,是清朝皇城的大门...
+        </p></div>`}
+      />
+      <Marker lng={116.392004} lat={39.915104} label="南海" icon={{ path: 'PLACE_PIN' }} >
+        <InfoWindow width="200" height="30" title="中南海" />
+      </Marker>
       <Marker lng={116.408016} lat={39.91146} label="中国国家博物馆" />
         <NavigationControl />
         <MapTypeControl mtype={"Ns"} position={"bottom-right"} />
@@ -212,6 +238,12 @@
         <Polygon path={polygonRectanglePoints} strokeColor={"blue"} strokeWeight={2} strokeOpacity={0.5} editing={editing} />
         
         <Polyline path={polylinePoints} strokeColor={"blue"} strokeWeight={2} strokeOpacity={0.5} editing={editing} />
+        
+        <Label
+					content="西单购物中心"
+					title="地址：北京市西城区西单北大街132号"
+					position={{ lng: 116.381024, lat: 39.91748 }}
+				/>
       </Map>
     </div>
     <p>
@@ -231,7 +263,7 @@
         <Map options={ pointCollectionMapConfig }>
           <CityListControl position={"top-left"} />
           <NavigationControl position={"top-right"} />
-          <MarkerList markers={ data.data } />
+          <PointCollection markers={ data.data } />
           <GeolocationControl position={"bottom-right"} />
         </Map>
       </div>
