@@ -15,6 +15,7 @@ export { default as Transit } from './search/Transit.svelte';
 export { default as Walking } from './search/Walking.svelte';
 
 export { default as Circle } from './overlays/Circle.svelte';
+export { default as InfoWindow } from './overlays/InfoWindow.svelte';
 export { default as Label } from './overlays/Label.svelte';
 export { default as Marker } from './overlays/Marker.svelte';
 export { default as MarkerList } from './overlays/MarkerList.svelte';
