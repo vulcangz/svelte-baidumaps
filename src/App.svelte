@@ -336,6 +336,27 @@
       </div>
     </div>
   </section> -->
+  
+  
+	<section class="container" id="example5">
+		<h5 class="title">5）新的 MarkerList 示例</h5>
+		<p>
+			1.多个图像标注组件。
+		</p>
+		<div class="row map-wrap">
+			<Map
+				{apiKey}
+				options={baseMapConfig}
+				withCenterMarker={true}
+			>
+        <MarkerList markers={[
+          {lng:116.326526,lat:39.922467,label:"玉渊潭公园"}, 
+          {lng:116.307533,lat:39.922641,label:"翠微烟雨公园"}, 
+          {lng:116.313408,lat:39.925278,label:"中央电视塔"}]}
+        />
+			</Map>
+		</div>
+	</section>
 
   <footer class="footer">
     <section class="container">
