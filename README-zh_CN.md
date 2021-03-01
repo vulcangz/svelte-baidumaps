@@ -10,7 +10,8 @@ Svelte 百度地图组件基于[百度地图 JavaScript API v2.0 类参考](http
 
 ## 用法
 
-简单参考: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
+* 简单参考: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
+* 交互式演示: [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
 
 ### 在 Svelte 应用中使用:
 
@@ -42,19 +43,19 @@ Map 是容器组件，Map 内可以有各种各样的组件。
 </script>
 ```
 
-#### 基本用法（MarkerList）
+#### 基本用法（PointCollection）
 
 有关此 API 的更多信息，请参见 [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b21)。
 
 ```jsx
 <Map apiKey="your_api_key" options={ pointCollectionMapConfig }>
-  <MarkerList markers={ data } />
+  <PointCollection markers={ data } />
   <NavigationControl />
   <ScalingControl />
 </Map>
 
 <script>
-  import { Map, MarkerList, NavigationControl, GeolocationControl } from './components/components.module.js'
+  import { Map, PointCollection, NavigationControl, GeolocationControl } from './components/components.module.js'
   import { data } from './your-data.js';
 
   let pointCollectionMapConfig = {
@@ -93,9 +94,10 @@ npm run dev
 - [x] Marker
 - [x] MarkerList
 - [x] Circle
-- [ ] Icon
-- [ ] InfoWindow
-- [ ] Label
+- ~~[ ] Icon~~
+- [x] InfoWindow
+- [x] Label
+- [x] PointCollection
 - [x] Polygon
 - [x] Polyline
 

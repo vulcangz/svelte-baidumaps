@@ -49,19 +49,19 @@ The container component is the map, and there are a variety of components which 
 </script>
 ```
 
-#### 3. Basic Usage (MarkerList)
+#### 3. Basic Usage (PointCollection)
 
 See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_reference.html#a3b21) for more information on API.
 
 ```jsx
 <Map apiKey="your_api_key" options={ pointCollectionMapConfig }>
-  <MarkerList markers={ data } />
+  <PointCollection markers={ data } />
   <NavigationControl />
   <ScalingControl />
 </Map>
 
 <script>
-  import { Map, MarkerList, NavigationControl, GeolocationControl } from '@vulcangz/svelte-baidumaps'
+  import { Map, PointCollection, NavigationControl, GeolocationControl } from '@vulcangz/svelte-baidumaps'
   import { data } from './your-marker-points-data.js';
 
   let pointCollectionMapConfig = {
@@ -92,9 +92,10 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 - [x] Marker
 - [x] MarkerList
 - [x] Circle
-- [ ] Icon
-- [ ] InfoWindow
-- [ ] Label
+- ~~[ ] Icon~~
+- [x] InfoWindow
+- [x] Label
+- [x] PointCollection
 - [x] Polygon
 - [x] Polyline
 
