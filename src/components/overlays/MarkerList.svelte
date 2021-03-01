@@ -48,5 +48,5 @@
 </script>
 
 {#each markers as marker}
-	<Marker lng={marker.lng} lat={marker.lat} label={Marker.label} />
+	<Marker lng={marker.lng} lat={marker.lat} label={marker.label} />
 {/each}
