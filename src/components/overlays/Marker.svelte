@@ -1,8 +1,8 @@
 <script>
 	import { getContext } from 'svelte';
-	import { contextKey } from './stores.js';
-	import { createSize, createSymbol } from './utils/factory.js';
-	import { ICONS, createDefaultSymbolIcon } from './utils/icon.js';
+	import { contextKey } from '../stores.js';
+	import { createSize, createSymbol } from '../utils/factory.js';
+	import { ICONS, createDefaultSymbolIcon } from '../utils/icon.js';
 
 	const { getMap, getBdMap } = getContext(contextKey);
 	const map = getMap();
