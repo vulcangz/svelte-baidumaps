@@ -1,5 +1,6 @@
 export { default as Map } from './Map.svelte';
 
+export { default as Control } from './controls/Control.svelte';
 export { default as GeolocationControl } from './controls/GeolocationControl.svelte';
 export { default as NavigationControl } from './controls/NavigationControl.svelte';
 export { default as ScaleControl } from './controls/ScaleControl.svelte';
