@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { Map, Marker, MarkerList, GeolocationControl, NavigationControl,
     CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
-  import { LocalSearch, Bus, Driving, Transit, Walking } from './components/components.module.js';
+  import { LocalSearch, Bus, Driving, Transit, Walking, LocalCity } from './components/components.module.js';
   import { Circle, Polygon, Polyline,	Label, InfoWindow, PointCollection } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
   
@@ -155,6 +155,17 @@
   function handleDragend(e) {
     console.log('event-->', e.detail.type, e.detail.target, e.detail.point)
   }
+  
+  function handleGetLocalCity(e) {
+		let log =
+			'Call handleGetLocalCity-->\n 城市名称:' +
+			e.detail.name +
+			'\n 最佳地图级别:' +
+			e.detail.level +
+			'\n 城市中心点: ' +
+			JSON.stringify(e.detail.center);
+		console.log(log);
+	}
 </script>
 
 <style>
@@ -244,6 +255,8 @@
 					title="地址：北京市西城区西单北大街132号"
 					position={{ lng: 116.381024, lat: 39.91748 }}
 				/>
+        
+        <LocalCity on:get={handleGetLocalCity} />
       </Map>
     </div>
     <p>
