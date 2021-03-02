@@ -92,7 +92,7 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 - [x] Marker
 - [x] MarkerList
 - [x] Circle
-- ~~[ ] Icon~~
+- [x] ~~Icon~~
 - [x] InfoWindow
 - [x] Label
 - [x] PointCollection
@@ -105,8 +105,8 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 - [x] Transit
 - [x] Walking
 - [x] Driving
-- [ ] LocalCity
-- [ ] Autocomplete
+- [x] LocalCity
+- [x] Autocomplete
 
 ## Todo
 

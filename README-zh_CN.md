@@ -94,7 +94,7 @@ npm run dev
 - [x] Marker
 - [x] MarkerList
 - [x] Circle
-- ~~[ ] Icon~~
+- [x] ~~Icon~~
 - [x] InfoWindow
 - [x] Label
 - [x] PointCollection
@@ -107,8 +107,8 @@ npm run dev
 - [x] Transit
 - [x] Walking
 - [x] Driving
-- [ ] LocalCity
-- [ ] Autocomplete
+- [x] LocalCity
+- [x] Autocomplete
 
 ## Todo
 
