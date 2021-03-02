@@ -9,6 +9,7 @@ export { default as CityListControl } from './controls/CityListControl.svelte';
 export { default as MapTypeControl } from './controls/MapTypeControl.svelte';
 export { default as CopyrightControl } from './controls/CopyrightControl.svelte';
 
+export { default as AutoComplete } from './search/AutoComplete.svelte';
 export { default as LocalCity } from './search/LocalCity.svelte';
 export { default as LocalSearch } from './search/LocalSearch.svelte';
 export { default as Bus } from './search/Bus.svelte';
