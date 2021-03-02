@@ -3,9 +3,10 @@
   import { onMount } from 'svelte';
   import { Map, Marker, MarkerList, GeolocationControl, NavigationControl,
     CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
-  import { LocalSearch, Bus, Driving, Transit, Walking, LocalCity } from './components/components.module.js';
+  import { LocalSearch, Bus, Driving, Transit, Walking, LocalCity, Control,	AutoComplete } from './components/components.module.js';
   import { Circle, Polygon, Polyline,	Label, InfoWindow, PointCollection } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
+  import Textfield from './Textfield.svelte';
   
   // Please change the apiKey to your key
   let apiKey = "your_api_key"
@@ -141,6 +142,18 @@
   
   let el
   let mapElement
+  
+  // for `AutoComplete` component demo
+  let label = '关键字',
+		required = true,
+		value = '',
+		error = '',
+		message = '请输入地名关键字',
+		messagePersist = false,
+		outlined = true,
+		filled = false,
+		readonly = false,
+		disabled = false;
   
   onMount(() => {
     console.log('the component has mounted');
@@ -352,9 +365,9 @@
   
   
 	<section class="container" id="example5">
-		<h5 class="title">5）新的 MarkerList 示例</h5>
+		<h5 class="title">5）自动完成、及新的 MarkerList 示例</h5>
 		<p>
-			1.多个图像标注组件。
+			1.结果提示、自动完成示例。2.多个图像标注组件。
 		</p>
 		<div class="row map-wrap">
 			<Map
@@ -367,6 +380,21 @@
           {lng:116.307533,lat:39.922641,label:"翠微烟雨公园"}, 
           {lng:116.313408,lat:39.925278,label:"中央电视塔"}]}
         />
+        <Control offset={{ width: 20, height: 10 }}>
+					<AutoComplete style={{ zIndex: 1 }}>
+						<Textfield
+							bind:value
+							{label}
+							{messagePersist}
+							{message}
+							{error}
+							{readonly}
+							{disabled}
+							{outlined}
+							{filled}
+						/>
+					</AutoComplete>
+				</Control>
 			</Map>
 		</div>
 	</section>
