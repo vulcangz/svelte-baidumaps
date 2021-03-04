@@ -18,7 +18,7 @@
     "test": "start-server-and-test dev http://localhost:5000 cy:run"
   },
   "svelte": "src/components/components.module.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "devDependencies": {
     "@babel/core": "7.11.5",
     "@babel/plugin-syntax-dynamic-import": "7.8.3",
