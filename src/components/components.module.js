@@ -26,3 +26,6 @@ export { default as MarkerList } from './overlays/MarkerList.svelte';
 export { default as PointCollection } from './overlays/PointCollection.svelte';
 export { default as Polygon } from './overlays/Polygon.svelte';
 export { default as Polyline } from './overlays/Polyline.svelte';
+
+export { default as Menu } from './context-menu/Menu.svelte';
+export { default as Item } from './context-menu/Item.svelte';
