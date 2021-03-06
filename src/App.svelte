@@ -2,8 +2,8 @@
   
   import { onMount } from 'svelte';
   import { Map, Marker, MarkerList, GeolocationControl, NavigationControl,
-    CityListControl, MapTypeControl, CopyrightControl } from './components/components.module.js';
-  import { LocalSearch, Bus, Driving, Transit, Walking, LocalCity, Control,	AutoComplete } from './components/components.module.js';
+    CityListControl, MapTypeControl, CopyrightControl, OverviewMapControl } from './components/components.module.js';
+  import { LocalSearch, Bus, Driving, Transit, Walking, LocalCity, Control,	AutoComplete, Menu, Item } from './components/components.module.js';
   import { Circle, Polygon, Polyline,	Label, InfoWindow, PointCollection } from './components/components.module.js';
   import { data } from '../sample-data/points-sample-data.js';
   import Textfield from './Textfield.svelte';
@@ -178,6 +178,16 @@
 			'\n 城市中心点: ' +
 			JSON.stringify(e.detail.center);
 		console.log(log);
+	}
+  
+	function gotoTianjin(e) {
+		console.log(e);
+		e.map.setCenter('天津');
+	}
+
+	function gotoShanghai(e) {
+		console.log(e);
+		e.map.setCenter('上海');
 	}
 </script>
 
@@ -365,9 +375,9 @@
   
   
 	<section class="container" id="example5">
-		<h5 class="title">5）自动完成、及新的 MarkerList 示例</h5>
+		<h5 class="title">5）自动完成、上下文菜单及新的 MarkerList 示例</h5>
 		<p>
-			1.结果提示、自动完成示例。2.多个图像标注组件。
+			1.结果提示、自动完成示例。2.多个图像标注组件。3.右键菜单。您可以在地图上添加自定义内容的右键菜单。
 		</p>
 		<div class="row map-wrap">
 			<Map
@@ -375,6 +385,7 @@
 				options={baseMapConfig}
 				withCenterMarker={true}
 			>
+        <OverviewMapControl position={"bottom-left"} offset={{width:30, height:30}} size={{width:300, height:200}} isOpen={true} />
         <MarkerList markers={[
           {lng:116.326526,lat:39.922467,label:"玉渊潭公园"}, 
           {lng:116.307533,lat:39.922641,label:"翠微烟雨公园"}, 
@@ -395,6 +406,32 @@
 						/>
 					</AutoComplete>
 				</Control>
+        
+        <Menu>
+					<Item
+						callback={(e) => {
+							e.map.zoomIn();
+						}}
+						text="放大一级"
+					/>
+					<Item
+						callback={function (e) {
+							e.map.zoomOut();
+						}}
+						text="缩小一级"
+						iconUrl="http://lbsyun.baidu.com/skins/MySkin/resources/img/red.png"
+					/>
+					<Item seperator />
+					<Item disabled text="去深圳" />
+					<Item callback={gotoTianjin} text="去天津" />
+					<Item
+						callback={gotoShanghai}
+						text="去上海"
+						iconUrl="http://lbsyun.baidu.com/skins/MySkin/resources/img/red.png"
+					/>
+					<Item seperator />
+					<Item disabled text="去深圳" />
+				</Menu>
 			</Map>
 		</div>
 	</section>
