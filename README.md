@@ -85,7 +85,7 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 - [x] MapTypeControl
 - [x] ScaleControl
 - [x] CopyrightControl
-- [ ] OverviewMapControl
+- [x] OverviewMapControl
 - [x] CityListControl
 
 ### Overlay components
@@ -107,6 +107,10 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 - [x] Driving
 - [x] LocalCity
 - [x] Autocomplete
+
+### ContextMenu components
+- [x] Menu
+- [x] Item
 
 ## Todo
 

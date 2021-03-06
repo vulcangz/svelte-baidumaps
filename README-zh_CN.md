@@ -87,7 +87,7 @@ npm run dev
 - [x] MapTypeControl
 - [x] ScaleControl
 - [x] CopyrightControl
-- [ ] OverviewMapControl
+- [x] OverviewMapControl
 - [x] CityListControl
 
 ### Overlay components
@@ -109,6 +109,10 @@ npm run dev
 - [x] Driving
 - [x] LocalCity
 - [x] Autocomplete
+
+### ContextMenu components
+- [x] Menu
+- [x] Item
 
 ## Todo
 
