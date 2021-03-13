@@ -1,12 +1,28 @@
-<script>
-	import { getContext } from 'svelte';
-	import { contextKey } from '../stores.js';
+<script context="module">	
 	import { createSize, createSymbol } from '../utils/factory.js';
 	import { ICONS, createDefaultSymbolIcon } from '../utils/icon.js';
+</script>
+
+<script>
+	/**
+	 * 图像标注组件
+	 *
+	 * @component Marker
+	 * @example
+	 * <Marker lng={116.404113} lat={39.919852} label="西雁翅楼" labelOffset={{weight: 30, height: 50}}
+	 * 		icon={{ path: 'PIN_DROP', opts: { anchor: { width: 10, height: 10 }, fillColor: 'green', scale: 2 } }} />
+	 */
+
+	import { getContext, setContext } from 'svelte';
+	import { contextKey, contextMarker } from '../stores.js';
 
 	const { getMap, getBdMap } = getContext(contextKey);
 	const map = getMap();
 	const bdmap = getBdMap();
+
+	setContext(contextMarker, {
+		getMarker: () => marker,
+	});
 
 	/**
 	 * 地理经度
@@ -28,7 +44,7 @@
 
 	/**
 	 * 文本标注的位置偏移值
-	 * @type {Size(width: Number, height: Number)}
+	 * @type {{width: Number, height: Number}}
 	 */
 	export let labelOffset = {
 		width: 20, // 水平方向的数值
@@ -43,9 +59,9 @@
 
 	/**
 	 * 矢量图标参数
-	 * @type {{ path: string, anchor: object{width: number, height: number}, rotation: number,
+	 * @type {{ path: string, opts: {anchor: {width: number, height: number}, rotation: number,
 	 *          fillColor: string, fillOpacity: number, scale: number,
-	 *          strokeColor: string, strokeWeight: number  }}
+	 *          strokeColor: string, strokeWeight: number  }}}
 	 */
 	export let icon = {
 		path: '',
@@ -82,12 +98,15 @@
 	}
 
 	point = new bdmap.Point(lng, lat);
-	marker = new bdmap.Marker(point, { icon: myIcon }); // 创建标注
+	// 创建标注
+	marker = new bdmap.Marker(point, { icon: myIcon });
 
-	if (!enableDragging) {
-		marker.enableDragging(); //marker可拖拽
+	if (enableDragging) {
+		// marker可拖拽
+		marker.enableDragging();
 	}
-	map.addOverlay(marker); //在地图中添加marker
+	// 在地图中添加marker
+	map.addOverlay(marker);
 	marker.setAnimation(bdmap.BMAP_ANIMATION_BOUNCE);
 
 	labelObject = new bdmap.Label(label, {
@@ -96,3 +115,5 @@
 	labelObject.setStyle({ color: 'red', fontSize: '1.2rem' });
 	marker.setLabel(labelObject);
 </script>
+
+<slot />
