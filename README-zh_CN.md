@@ -6,10 +6,12 @@ Svelte 百度地图组件基于[百度地图 JavaScript API v2.0 类参考](http
 
 ## 演示
 
-[在线演示](https://vulcangz.github.io/svelte-baidumaps/demo/)
+* 交互式演示: [https://svelte.worldlink.com.cn/examples](https://svelte.worldlink.com.cn/examples)
+* 简单演示: [https://vulcangz.github.io/svelte-baidumaps/demo/](https://vulcangz.github.io/svelte-baidumaps/demo/)
 
 ## 用法
 
+* 文档: [https://svelte.worldlink.com.cn/docs](https://svelte.worldlink.com.cn/docs)
 * 简单参考: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
 * 交互式演示: [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
 
@@ -117,7 +119,7 @@ npm run dev
 ## Todo
 
 * test
-* docs
+* ~~docs~~
 
 ## 致谢及参考
 

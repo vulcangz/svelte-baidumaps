@@ -2,12 +2,12 @@
 
 English | [简体中文](./README-zh_CN.md)
 
-Svelte components based on Baidu Map JavaScript Api package.
+Svelte components based on Baidu Map JavaScript API package.
 
 ## Demo
 
-* [https://vulcangz.github.io/svelte-baidumaps/demo/](https://vulcangz.github.io/svelte-baidumaps/demo/)
-* [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
+* Demo with REPL support: [https://svelte.worldlink.com.cn/examples](https://svelte.worldlink.com.cn/examples)
+* Simple Demo: [https://vulcangz.github.io/svelte-baidumaps/demo/](https://vulcangz.github.io/svelte-baidumaps/demo/)
 
 ## Install
 
@@ -16,6 +16,7 @@ npm install --save @vulcangz/svelte-baidumaps
 ```
 ## Usage
 
+* Documentation: [https://svelte.worldlink.com.cn/docs](https://svelte.worldlink.com.cn/docs)
 * Simple reference: [App.svelte](https://github.com/vulcangz/svelte-baidumaps/tree/master/src/App.svelte)
 * Usage examples: [Demo with REPL support](https://svelte.worldlink.com.cn/examples)
 
@@ -115,7 +116,7 @@ See [PointCollection](http://lbsyun.baidu.com/cms/jsapi/reference/jsapi_referenc
 ## Todo
 
 * test
-* docs
+* ~~docs~~
 
 ## Credits and Inspiration
 
